@@ -2,12 +2,10 @@ package ejerGestionEstudiante.dominio;
 
 import ejerGestionEstudiante.enumeration.ComplejidadEnum;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.*;
 
 public class Curso {
+    private UUID id;
     private String nombre;
     private Integer cantidadhoras;
     private ComplejidadEnum complejidad;
@@ -54,5 +52,13 @@ public class Curso {
 
     public void setExamenes(List<Examen> examenes) {
         this.examenes = examenes;
+    }
+
+    public UUID getId() {
+        return id;
+    }
+
+    public void setId(UUID id) {
+        this.id = id;
     }
 }

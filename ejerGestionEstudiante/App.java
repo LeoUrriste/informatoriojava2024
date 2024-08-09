@@ -1,12 +1,15 @@
 package ejerGestionEstudiante;
 
+import ejerGestionEstudiante.dominio.Institucion;
+
 import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) {
 
-        //menu de opciones
+        Institucion institucion = new Institucion();
 
+        //menu de opciones
         int opcion;
         Scanner scanner = new Scanner(System.in);
 
@@ -25,6 +28,7 @@ public class App {
             switch (opcion){
                 case 1:
                     //funcionadlidad crear curso
+                    institucion.crearcurso();
                     break;
                 case 2:
                      //funcionalidad registrar estudiante nuevo
