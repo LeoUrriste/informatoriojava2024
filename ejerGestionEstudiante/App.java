@@ -3,6 +3,7 @@ package ejerGestionEstudiante;
 import ejerGestionEstudiante.dominio.Institucion;
 
 import java.util.Scanner;
+import java.util.UUID;
 
 public class App {
     public static void main(String[] args) {
@@ -32,6 +33,10 @@ public class App {
                     break;
                 case 2:
                      //funcionalidad registrar estudiante nuevo
+                    System.out.println("Ingrese id de curso");
+                    String idCurso = scanner.nextLine();
+                    scanner.nextLine();
+                    institucion.inscribirEstudiante(UUID.fromString(idCurso));
                     break;
                 case 3:
                     // funcionalidad registrar estudiante existente

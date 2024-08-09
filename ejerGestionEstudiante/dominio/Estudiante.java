@@ -18,11 +18,11 @@ public class Estudiante {
         this.dni = dni;
     }
 
-    public List<Curso> getCurso() {
+    public List<Curso> getCursos() {
         return curso;
     }
 
-    public void setCurso(List<Curso> curso) {
+    public void setCursos(List<Curso> curso) {
         this.curso = curso;
     }
 
