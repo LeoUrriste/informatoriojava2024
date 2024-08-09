@@ -135,4 +135,11 @@ public class Institucion {
     public void setCursos(List<Curso> cursos) {
         this.cursos = cursos;
     }
+
+    public void listarCursos(){
+        System.out.println("Lista de cursos disponibles");
+        for (Curso curso : this.cursos) {
+            System.out.println(curso.toString());
+        }
+    }
 }

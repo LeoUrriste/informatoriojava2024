@@ -61,4 +61,20 @@ public class Curso {
     public void setId(UUID id) {
         this.id = id;
     }
+
+    @Override
+    public String toString() {
+
+        StringBuilder stringBuilder = new StringBuilder();
+        return stringBuilder.append("Id: ").
+                append(this.getId()).append("\n")
+                .append("Nombre: ").
+                append(this.getNombre()).append("\n")
+                .append("Cantidad de horas: ")
+                .append(this.getCantidadhoras()).append("\n")
+                .append("Complejidad: ").
+                append(this.getComplejidad()).append("\n")
+                .append("-------------------------------------\n")
+                .toString();
+    }
 }

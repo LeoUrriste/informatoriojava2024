@@ -43,6 +43,7 @@ public class App {
                     break;
                 case 4:
                     //fincionalidad listar curso
+                    institucion.listarCursos();
                     break;
                 case 5:
                     //funcionalidad listar curso y estudiante
