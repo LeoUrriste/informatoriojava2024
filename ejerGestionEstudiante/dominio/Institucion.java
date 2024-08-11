@@ -4,10 +4,7 @@ import ejerGestionEstudiante.enumeration.ComplejidadEnum;
 
 import javax.swing.plaf.synth.SynthOptionPaneUI;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
-import java.util.UUID;
+import java.util.*;
 
 public class Institucion {
     private List<Curso> cursos = new ArrayList();
@@ -52,6 +49,7 @@ public class Institucion {
         boolean existeCurso = Boolean.FALSE;
 
         for (Curso curso: this.cursos){
+
             if ( curso.getId().equals(idCurso)){
                 //Encontramos el curso
                 estudiante.getCursos().add(curso);
@@ -125,6 +123,59 @@ public class Institucion {
 
         return nuevoCurso;
 
+    }
+
+    public void inscribirEstudianteACurso(UUID idCurso, Long dni){
+
+        Estudiante estudiante = null;
+        boolean existeElEstudiante = Boolean.FALSE;
+        boolean esCursoEncontrado = Boolean.FALSE;
+
+        for (Curso curso: this.cursos){
+            if (curso.getEstudiantes().containsKey(dni)){
+                estudiante = curso.getEstudiantes().get(dni);
+                existeElEstudiante = Boolean.TRUE;
+                break;
+            }
+        }
+        if (!existeElEstudiante){
+            throw new NoSuchElementException("No existe el estudiante");
+        }
+
+        for (Curso curso: this.cursos){
+            if (curso.getId().equals(idCurso)){
+                estudiante.getCursos().add(curso);
+                curso.getEstudiantes().put(estudiante.getDni(), estudiante);
+                esCursoEncontrado = Boolean.TRUE;
+                break;
+            }
+        }
+        if (!esCursoEncontrado){
+            throw new NoSuchElementException("No existe el curso");
+        }else {
+            System.out.println("Estudiante asignado al curso");
+        }
+
+    }
+
+    public void listarEstudiantesYCursos(){
+        Set<Estudiante> listasEstudiantesSinRepetir = new HashSet<>(); // hashset para evitar duplicados
+
+        //Recorrer los cursos y agregar estudiantes al hashset
+        for (Curso curso: cursos) {
+            listasEstudiantesSinRepetir.addAll(curso.getEstudiantes().values());
+        }
+
+        ArrayList<Estudiante> listarEstudiantes = new ArrayList<>(listasEstudiantesSinRepetir);
+
+        System.out.println("Estudiantes: ");
+        for (Estudiante estudiante: listarEstudiantes){
+            System.out.println(estudiante.toString());
+
+            for (Curso curso: estudiante.getCursos()){
+                System.out.println(curso.toString());
+            }
+        }
     }
 
 

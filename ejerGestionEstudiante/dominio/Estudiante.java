@@ -1,6 +1,7 @@
 package ejerGestionEstudiante.dominio;
 
 import java.time.LocalDate;
+import java.time.Period;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,5 +41,23 @@ public class Estudiante {
 
     public void setFechaNacimiento(LocalDate fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
+    }
+    public int getEdad(LocalDate fechaNacimiento) {
+        LocalDate fechaActual = LocalDate.now();
+        Period periodo = Period.between(fechaNacimiento, fechaActual);
+        return periodo.getYears(); // Retornar los años
+    }
+    @Override
+    public String toString() {
+
+        StringBuilder stringBuilder = new StringBuilder();
+        return stringBuilder.append("Dni: ")
+                .append(this.getDni()).append("\n")
+                .append("Nombre: ")
+                .append(this.getNombre()).append("\n")
+                .append("Edad: ")
+                .append(getEdad(this.getFechaNacimiento())).append("\n")
+                .append("------------------------")
+                .toString();
     }
 }
